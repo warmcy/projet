@@ -20,5 +20,23 @@
   <%= @town.long %>
 </p>
 
+<p>
+  <strong>forecast:</strong>
+  <%= @darksky.forecast('42.7243','-73.6927') %>
+</p>
+
+<p>
+  <strong>brief_forecast:</strong>
+  <%= @town.darksky.brief_forecast('42.7243','-73.6927') %>
+</p>
+
+<p>
+  <strong>precipitation:</strong>
+  <%= @town.darksky.precipitation(['42.7','-73.6',1325607100,'42.0','-73.0',1325607791]) %>
+</p>
+<p>
+  <strong>interesting:</strong>
+  <%= @darksky.interesting %>
+</p>
 <%= link_to 'Edit', edit_town_path(@town) %> |
 <%= link_to 'Back', towns_path %>
