@@ -32,7 +32,6 @@ gem 'spring',        group: :development
 
 # Use unicorn as the app server
 # gem 'unicorn'
-gem 'nominatim', '~> 0.0.6'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -40,3 +39,5 @@ gem 'nominatim', '~> 0.0.6'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'nominatim', '~> 0.0.6'
+gem 'darksky'
