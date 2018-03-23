@@ -1,4 +1,6 @@
 class TownsController < ApplicationController
+  before_action :set_town, only: [:show, :edit, :update, :destroy]
+  
   # GET /towns
   # GET /towns.json
   def index
@@ -8,6 +10,10 @@ class TownsController < ApplicationController
   # GET /towns/1
   # GET /towns/1.json
   def show
+    forecast = @town.forecast
+    puts forecast.latitude
+    puts forecast.currently.temperature
+    puts forecast.currently.summary
   end
 
   # GET /towns/new

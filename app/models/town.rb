@@ -5,10 +5,7 @@ end
 
 class Town < ActiveRecord::Base
   before_validation :geocode
-  validates :name, :lat, :long, presence: true
-  
-  before_action :set_town, only: [:show, :edit, :update, :destroy]
-  
+  validates :name, :lat, :long, presence: true 
   
   private
   def geocode
@@ -21,10 +18,7 @@ class Town < ActiveRecord::Base
   end
   
   public
-    def getWeather
-      weather = ForecastIO.forecast(self.latitude, self.longitude, params: { units: 'si' })
-      if weather
-        return weather
-      end
-    end
+  def forecast
+    return forecast = ForecastIO.forecast(self.lat, self.long, params: { units: 'si' })
+  end
 end

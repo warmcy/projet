@@ -20,5 +20,37 @@
   <%= @town.long %>
 </p>
 
+<p>
+  <h2>Current weather</h2>
+</p>
+
+<p>
+  <strong>Summary:</strong>
+  <%= @town.forecast.currently.summary %>
+</p>
+
+<p>
+  <strong>Temperature:</strong>
+  <%= @town.forecast.currently.temperature %> °C
+</p>
+
+<br>
+<p>
+  <h2>Next days</h2>
+</p>
+
+<p>
+  <strong>Summary:</strong>
+  <%= @town.forecast.daily.summary %>
+</p>
+
+<div class="widget">
+  <iframe id="forecast_embed" 
+          frameborder="0" 
+          height="245" 
+          width="100%" 
+  src="//forecast.io/embed/#lat=<%= @town.lat %>&lon=<%= @town.long %>&name=<%= @town.name %>&units=si">
+  </iframe> 
+</div>
 <%= link_to 'Edit', edit_town_path(@town) %> |
 <%= link_to 'Back', towns_path %>
