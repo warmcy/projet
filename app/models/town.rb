@@ -1,11 +1,14 @@
+require 'forecast_io'
+ForecastIO.configure do |configuration|
+  configuration.api_key = '9dd5cfea95cc580c3d6d1bd573594d73'
+end
+
 class Town < ActiveRecord::Base
   before_validation :geocode
   validates :name, :lat, :long, presence: true
   
+  before_action :set_town, only: [:show, :edit, :update, :destroy]
   
-  def forecast
-    forecast ||= ForecastIO.forecast(latitude, longitude, params: { units: 'si', lang: 'fr' }).currently
-  end
   
   private
   def geocode
@@ -16,4 +19,12 @@ class Town < ActiveRecord::Base
       self.long = current_town.lon
     end
   end
+  
+  public
+    def getWeather
+      weather = ForecastIO.forecast(self.latitude, self.longitude, params: { units: 'si' })
+      if weather
+        return weather
+      end
+    end
 end
